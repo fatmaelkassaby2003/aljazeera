@@ -1,0 +1,628 @@
+{
+    "info": {
+        "name": "Al-Jazeera Portfolio API",
+        "description": "API شامل لبورتفوليو الجزيرة والقطاعات - الخدمات والمناهج في جداول منفصلة",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Island API",
+            "item": [
+                {
+                    "name": "Get Island Portfolio",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/island",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "island"
+                            ]
+                        },
+                        "description": "عرض معلومات بورتفوليو الجزيرة"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create or Update Island",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "جزيرة الجزيرة",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "جزيرة الجزيرة هي واحدة من أجمل الوجهات السياحية في الخليج العربي",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "highlights[0]",
+                                    "value": "شواطئ رملية ذهبية ممتدة على طول الساحل",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "highlights[1]",
+                                    "value": "مياه فيروزية صافية مثالية للسباحة والغطس",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "highlights[2]",
+                                    "value": "منتجعات سياحية فاخرة ذات خدمات عالمية",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "image",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/island",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "island"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Sectors API",
+            "item": [
+                {
+                    "name": "Get All Sectors",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/sectors?limit=",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "sectors"
+                            ],
+                            "query": [
+                                {
+                                    "key": "limit",
+                                    "value": "",
+                                    "description": "عدد القطاعات (اختياري)",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "عرض جميع القطاعات\\n\\nالخدمات والمناهج من جداول منفصلة"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Sector by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/sectors/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "sectors",
+                                "1"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Sector",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "القطاع الصحي",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "حلول طبية ذكية ومتكاملة للقطاع الصحي",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "services[0]",
+                                    "value": "السجلات الطبية الإلكترونية",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "services[1]",
+                                    "value": "الحجز الإلكتروني",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "services[2]",
+                                    "value": "التطبيب عن بُعد",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "methodologies[0][title]",
+                                    "value": "الأمان والخصوصية",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "methodologies[0][description]",
+                                    "value": "نضع أمان البيانات الطبية والخصوصية في المقدمة",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "methodologies[1][title]",
+                                    "value": "سهولة الاستخدام",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "methodologies[1][description]",
+                                    "value": "واجهات بديهية وسهلة للمرضى والأطباء",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "image",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/sectors",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "sectors"
+                            ]
+                        },
+                        "description": "إضافة قطاع جديد\\n\\nالخدمات: مصفوفة strings\\nالمناهج: مصفوفة objects (title + description)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Sector",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "القطاع الحكومي",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "description",
+                                    "value": "نقدم حلول متكاملة للجهات الحكومية تشمل التحول الرقمي",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "services[0]",
+                                    "value": "الاستشارات الإدارية والتخطيط",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "services[1]",
+                                    "value": "التحول الرقمي للجهات الحكومية",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "services[2]",
+                                    "value": "تطوير الأنظمة الإلكترونية",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "methodologies[0][title]",
+                                    "value": "منهجية أجايل",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "methodologies[0][description]",
+                                    "value": "نستخدم أجايل للتطوير التدريجي والتحسين المستمر",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "methodologies[1][title]",
+                                    "value": "الحوكمة والالتزام",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "methodologies[1][description]",
+                                    "value": "نلتزم بأعلى معايير الحوكمة والشفافية",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "image",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/sectors/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "sectors",
+                                "1"
+                            ]
+                        },
+                        "description": "⚠️ استخدم POST وليس PUT\\n\\nتحديث قطاع موجود"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Sector",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/sectors/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "sectors",
+                                "1"
+                            ]
+                        },
+                        "description": "حذف قطاع\\n\\nCascade delete للخدمات والمناهج"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Clients API",
+            "item": [
+                {
+                    "name": "Get All Clients",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/clients",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "clients"
+                            ]
+                        },
+                        "description": "عرض جميع العملاء مع لوجوهاتهم"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Add Client",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "أرامكو السعودية",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "logo",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/clients",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "clients"
+                            ]
+                        },
+                        "description": "إضافة عميل جديد مع لوجو"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Client",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "أرامكو السعودية المحدثة",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "logo",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/clients/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "clients",
+                                "1"
+                            ]
+                        },
+                        "description": "⚠️ استخدم POST\\n\\nتحديث عميل موجود"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Client",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/clients/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "clients",
+                                "1"
+                            ]
+                        },
+                        "description": "حذف عميل مع اللوجو"
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Certificates API",
+            "item": [
+                {
+                    "name": "Get All Certificates",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/certificates",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "certificates"
+                            ]
+                        },
+                        "description": "عرض جميع الشهادات مع الصور"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Certificate",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "شهادة جديدة",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "image",
+                                    "type": "file",
+                                    "src": []
+                                },
+                                {
+                                    "key": "issue_date",
+                                    "value": "2024-01-01",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "issuing_authority",
+                                    "value": "جهة الإصدار",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/certificates",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "certificates"
+                            ]
+                        },
+                        "description": "إضافة شهادة جديدة"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Certificate",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "شهادة محدثة",
+                                    "type": "text"
+                                },
+                                {
+                                    "key": "image",
+                                    "type": "file",
+                                    "src": []
+                                },
+                                {
+                                    "key": "issue_date",
+                                    "value": "2024-02-01",
+                                    "type": "text"
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/certificates/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "certificates",
+                                "1"
+                            ]
+                        },
+                        "description": "تحديث شهادة موجودة (نستخدم POST للصور)"
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Certificate",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/certificates/1",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "certificates",
+                                "1"
+                            ]
+                        },
+                        "description": "حذف شهادة"
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://127.0.0.1:8000"
+        }
+    ]
+}

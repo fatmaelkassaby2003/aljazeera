@@ -1,0 +1,19 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # Redirect to public folder if not already there
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ public/$1 [L,QSA]
+</IfModule>
+
+# Disable directory browsing
+Options -Indexes
+
+# Set default charset
+AddDefaultCharset UTF-8
+
+# Prevent access to sensitive files
+<FilesMatch "^\.env|composer\.(json|lock)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
