@@ -110,7 +110,7 @@ class SectorResource extends Resource
                 Tables\Columns\ImageColumn::make('image')
                     ->circular()
                     ->label('الصورة')
-                    ->extraAttributes(['style' => 'margin-inline-start: -2rem !important;']),
+                    ->extraAttributes(['style' => 'margin-inline-start: -1rem !important;']),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->weight('bold')
@@ -145,12 +145,50 @@ class SectorResource extends Resource
             ])
             ->actionsColumnLabel('الإجراءات')
             ->actions([
-                Tables\Actions\ActionGroup::make([
-                    Tables\Actions\ViewAction::make(),
-                    Tables\Actions\DeleteAction::make(),
-                    Tables\Actions\EditAction::make(),
-                ])
-                    ->dropdown(),
+                Tables\Actions\ViewAction::make()->iconButton(),
+                Tables\Actions\EditAction::make()->iconButton(),
+                Tables\Actions\Action::make('delete')
+                    ->icon('heroicon-o-trash')
+                    ->color('danger')
+                    ->iconButton()
+                    ->extraAttributes([
+                        'onclick' => 'if (!confirm("هل أنت متأكد من حذف هذا العنصر؟")) { event.stopPropagation(); return false; }'
+                    ])
+                    ->action(function ($record) {
+                        \Log::info('DELETE ACTION STARTED', [
+                            'record_id' => $record->id,
+                            'record_name' => $record->name,
+                        ]);
+                        
+                        try {
+                            $record->delete();
+                            \Log::info('DELETE ACTION SUCCESS', ['record_id' => $record->id]);
+                            
+                            // Show success notification
+                            \Filament\Notifications\Notification::make()
+                                ->title('تم الحذف بنجاح')
+                                ->success()
+                                ->send();
+                                
+                        } catch (\Exception $e) {
+                            \Log::error('DELETE ACTION FAILED', [
+                                'record_id' => $record->id,
+                                'error' => $e->getMessage(),
+                                'trace' => $e->getTraceAsString()
+                            ]);
+                            
+                            \Filament\Notifications\Notification::make()
+                                ->title('فشل الحذف')
+                                ->danger()
+                                ->send();
+                                
+                            throw $e;
+                        }
+                    })
+                    ->after(function () {
+                        // Force page refresh after delete
+                        return redirect()->to(request()->header('Referer'));
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -164,6 +202,16 @@ class SectorResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        return true;
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return true;
     }
 
     public static function getPages(): array

@@ -14,7 +14,7 @@ class CertificateController extends Controller
             return [
                 'id' => $certificate->id,
                 'name' => $certificate->name,
-                'image' => asset('storage/' . $certificate->image),
+                'image' => asset($certificate->image),
                 'issue_date' => $certificate->issue_date,
                 'issuing_authority' => $certificate->issuing_authority,
             ];

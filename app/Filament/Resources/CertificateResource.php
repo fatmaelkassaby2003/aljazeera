@@ -64,7 +64,7 @@ class CertificateResource extends Resource
                 Tables\Columns\ImageColumn::make('image')
                     ->circular()
                     ->label('الصورة')
-                    ->extraAttributes(['style' => 'margin-inline-start: -4rem !important;']),
+                    ->extraAttributes(['style' => 'margin-inline-start: -3rem !important;']),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->weight('bold')
@@ -88,12 +88,25 @@ class CertificateResource extends Resource
             ])
             ->actionsColumnLabel('الإجراءات')
             ->actions([
-                Tables\Actions\ActionGroup::make([
-                    Tables\Actions\ViewAction::make(),
-                    Tables\Actions\DeleteAction::make(),
-                    Tables\Actions\EditAction::make(),
-                ])
-                    ->dropdown(),
+                Tables\Actions\ViewAction::make()->iconButton(),
+                Tables\Actions\EditAction::make()->iconButton(),
+                Tables\Actions\Action::make('delete')
+                    ->icon('heroicon-o-trash')
+                    ->color('danger')
+                    ->iconButton()
+                    ->extraAttributes([
+                        'onclick' => 'if (!confirm("هل أنت متأكد من حذف هذا العنصر؟")) { event.stopPropagation(); return false; }'
+                    ])
+                    ->action(function ($record) {
+                        $record->delete();
+                        \Filament\Notifications\Notification::make()
+                            ->title('تم الحذف بنجاح')
+                            ->success()
+                            ->send();
+                    })
+                    ->after(function () {
+                        return redirect()->to(request()->header('Referer'));
+                    }),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
@@ -107,6 +120,16 @@ class CertificateResource extends Resource
         return [
             //
         ];
+    }
+
+    public static function canDelete(\Illuminate\Database\Eloquent\Model $record): bool
+    {
+        return true;
+    }
+
+    public static function canDeleteAny(): bool
+    {
+        return true;
     }
 
     public static function getPages(): array

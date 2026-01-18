@@ -398,5 +398,34 @@ main {
     display: flex !important;
     justify-content: flex-start !important;
     align-items: center !important;
-    margin-inline-start: -9rem !important;
+}
+
+/* ============================================ */
+/* COMPACT ACTIONS SPACING                     */
+/* ============================================ */
+
+/* Reduce gap between action icons */
+.fi-ta-actions {
+    gap: 0 !important;
+    display: flex !important;
+}
+
+/* Remove margins and reduce padding on action buttons */
+.fi-ta-actions .fi-icon-btn,
+.fi-ta-actions a,
+.fi-ta-actions button {
+    margin: 0 !important;
+    padding: 0.25rem !important;
+    /* Minimal padding for clickability */
+}
+
+/* Force icons to be fully visible */
+.fi-ta-actions .fi-icon-btn {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* Hover effect */
+.fi-ta-actions .fi-icon-btn:hover {
+    background-color: rgba(0, 0, 0, 0.05) !important;
 }
