@@ -1,10 +1,7 @@
-<div class="flex items-center justify-center gap-3 h-full w-full">
-    <!-- Logo Image -->
-    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="h-12 w-auto brand-logo">
-    
-    <!-- Styled Text - Centered -->
-    <div class="brand-text flex items-center gap-1 font-bold text-2xl tracking-tight leading-none">
+<div class="flex items-center gap-3">
+    <img src="{{ asset('img/logo.png') }}" alt="Logo" class="brand-logo" style="height: 3rem; width: auto;" />
+    <div class="flex items-center font-bold text-xl tracking-tight brand-text whitespace-nowrap">
         <span style="color: #3b82f6;">ثقة</span>
-        <span class="text-white">الجزيرة</span>
+        <span style="color: #ffffff;">الجزيرة</span>
     </div>
 </div>

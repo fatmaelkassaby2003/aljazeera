@@ -74,7 +74,8 @@ class IslandResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->circular()
-                    ->label('الصورة'),
+                    ->label('الصورة')
+                    ->extraAttributes(['style' => 'margin-inline-start: -2rem !important;']),
                 Tables\Columns\TextColumn::make('name')
                     ->weight('bold')
                     ->label('الاسم'),
@@ -91,11 +92,16 @@ class IslandResource extends Resource
             ->actionsColumnLabel('الإجراءات')
             ->actions([
                 Tables\Actions\ActionGroup::make([
+                    Tables\Actions\ViewAction::make(),
+                    Tables\Actions\DeleteAction::make(),
                     Tables\Actions\EditAction::make(),
-                ])->dropdown(),
+                ])
+                    ->dropdown(),
             ])
             ->bulkActions([
-                // No delete
+                Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\DeleteBulkAction::make(),
+                ]),
             ]);
     }
 

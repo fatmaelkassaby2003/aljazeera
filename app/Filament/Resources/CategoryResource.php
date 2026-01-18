@@ -62,9 +62,11 @@ class CategoryResource extends Resource
             ->actionsColumnLabel('الإجراءات')
             ->actions([
                 Tables\Actions\ActionGroup::make([
-                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                ])->dropdown(),
+                    Tables\Actions\EditAction::make(),
+                ])
+                    ->dropdown(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

@@ -260,7 +260,7 @@ main {
 }
 
 .fi-simple-main .fi-form-actions {
-    margin-top: -5.2rem !important;
+    margin-top: 0.5rem !important;
 }
 
 .fi-simple-main .fi-fo-field-wrp:has(input[type="checkbox"]) {
@@ -320,41 +320,26 @@ main {
 }
 
 /* ============================================ */
+/* ============================================ */
 /* LOGIN PAGE SPECIFIC BRANDING                */
 /* ============================================ */
 
-/* On dashboard and sidebar: hide logo, show only text */
-.fi-page-dashboard .brand-logo,
-.fi-sidebar .brand-logo,
-.fi-sidebar-header .brand-logo {
+/* On login page: hide custom brand text, show only logo */
+.fi-simple-page .brand-text {
     display: none !important;
 }
 
-/* On dashboard and sidebar: add brand text via CSS */
-.fi-page-dashboard .fi-logo::after,
-.fi-sidebar .fi-logo::after,
-.fi-sidebar-header .fi-logo::after {
-    content: 'ثقة الجزيرة';
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-right: 0.5rem;
-    background: linear-gradient(135deg, #3b82f6 0%, #ffffff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block;
-}
-
-/* On login page: show logo only, no text */
-.fi-simple-page .fi-logo::after {
-    content: '' !important;
-    display: none !important;
+/* On login page: ensure logo is centered and sized */
+.fi-simple-page .brand-logo {
+    height: 5rem !important;
+    width: auto !important;
+    margin: 0 auto;
 }
 
 /* Move login button down a bit */
 .fi-simple-page .fi-btn-primary,
 .fi-simple-page button[type="submit"] {
-    margin-top: 7rem !important;
+    margin-top: 2rem !important;
 }
 
 /* Ensure password toggle and remember me are clickable */
@@ -370,4 +355,48 @@ main {
 .fi-simple-page .fi-fo-field-wrp {
     position: relative !important;
     z-index: 1 !important;
+}
+
+/* ============================================ */
+/* SIDEBAR VS LOGIN PAGE BRAND DISPLAY         */
+/* ============================================ */
+
+/* On sidebar: hide logo, show text only */
+.fi-sidebar .brand-logo {
+    display: none !important;
+}
+
+/* On login page: hide text, show logo only */
+.fi-simple-page .brand-text {
+    display: none !important;
+}
+
+.fi-simple-page .brand-logo {
+    height: 4rem !important;
+    width: auto !important;
+}
+
+/* Brand name styling */
+.fi-sidebar-header .fi-logo {
+    color: #ffffff !important;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* ============================================ */
+/* IMAGE COLUMN ALIGNMENT IN TABLES            */
+/* ============================================ */
+
+/* Reset padding for image columns */
+.fi-ta-header-cell:first-child,
+.fi-ta-cell:first-child {
+    padding-inline-start: 1rem !important;
+}
+
+/* Align image content to match header text position */
+.fi-ta-image {
+    display: flex !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    margin-inline-start: -9rem !important;
 }

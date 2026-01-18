@@ -13,4 +13,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Filament handles the root route automatically since panel path is ''
+Route::redirect('/', '/admin');

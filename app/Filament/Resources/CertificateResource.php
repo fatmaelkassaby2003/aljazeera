@@ -63,7 +63,8 @@ class CertificateResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->circular()
-                    ->label('الصورة'),
+                    ->label('الصورة')
+                    ->extraAttributes(['style' => 'margin-inline-start: -4rem !important;']),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->weight('bold')
@@ -88,10 +89,11 @@ class CertificateResource extends Resource
             ->actionsColumnLabel('الإجراءات')
             ->actions([
                 Tables\Actions\ActionGroup::make([
-                    Tables\Actions\EditAction::make(),
                     Tables\Actions\ViewAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                ])->dropdown(),
+                    Tables\Actions\EditAction::make(),
+                ])
+                    ->dropdown(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

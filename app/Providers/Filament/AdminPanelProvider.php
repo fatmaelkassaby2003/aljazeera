@@ -25,16 +25,14 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('')
+            ->path('admin')
             ->login()
             ->colors([
                 'primary' => Color::Blue,
                 'gray' => Color::Slate,
             ])
             ->font('Cairo')
-            ->brandName('') 
-            ->brandLogo(asset('img/logo.png'))
-            ->darkModeBrandLogo(asset('img/logo.png'))
+            ->brandLogo(fn () => view('filament.brand'))
             ->brandLogoHeight('3rem')
             ->favicon(asset('favicon.ico'))
             ->renderHook(

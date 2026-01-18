@@ -57,7 +57,8 @@ class ClientResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('logo')
                     ->circular()
-                    ->label('الشعار'),
+                    ->label('الشعار')
+                    ->extraAttributes(['style' => 'margin-inline-start: -9rem !important;']),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->weight('bold')
@@ -75,9 +76,11 @@ class ClientResource extends Resource
             ->actionsColumnLabel('الإجراءات')
             ->actions([
                 Tables\Actions\ActionGroup::make([
-                    Tables\Actions\EditAction::make(),
+                    Tables\Actions\ViewAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                ])->dropdown(),
+                    Tables\Actions\EditAction::make(),
+                ])
+                    ->dropdown(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

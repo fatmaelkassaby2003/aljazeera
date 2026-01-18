@@ -109,7 +109,8 @@ class SectorResource extends Resource
             ->columns([
                 Tables\Columns\ImageColumn::make('image')
                     ->circular()
-                    ->label('الصورة'),
+                    ->label('الصورة')
+                    ->extraAttributes(['style' => 'margin-inline-start: -2rem !important;']),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable()
                     ->weight('bold')
@@ -146,9 +147,10 @@ class SectorResource extends Resource
             ->actions([
                 Tables\Actions\ActionGroup::make([
                     Tables\Actions\ViewAction::make(),
-                    Tables\Actions\EditAction::make(),
                     Tables\Actions\DeleteAction::make(),
-                ])->dropdown(),
+                    Tables\Actions\EditAction::make(),
+                ])
+                    ->dropdown(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
