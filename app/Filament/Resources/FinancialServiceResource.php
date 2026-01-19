@@ -103,8 +103,12 @@ class FinancialServiceResource extends Resource
             ->filters([])
             ->actionsColumnLabel('الإجراءات')
             ->actions([
-                Tables\Actions\ViewAction::make()->iconButton(),
-                Tables\Actions\EditAction::make()->iconButton(),
+                Tables\Actions\ViewAction::make()
+                    ->iconButton()
+                    ->extraAttributes(['style' => 'padding: 0.125rem !important;']),
+                Tables\Actions\EditAction::make()
+                    ->iconButton()
+                    ->extraAttributes(['style' => 'padding: 0.125rem !important;']),
             ])
             ->bulkActions([]);
     }
