@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\IntegrationService;
 use Illuminate\Http\Request;
+use App\Http\Resources\IntegrationServiceResource;
 
 class IntegrationServiceController extends Controller
 {
@@ -23,7 +24,7 @@ class IntegrationServiceController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Integration service retrieved successfully',
-            'data' => $service
+            'data' => new IntegrationServiceResource($service)
         ]);
     }
 
@@ -42,7 +43,7 @@ class IntegrationServiceController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Integration service retrieved successfully',
-            'data' => $service
+            'data' => new IntegrationServiceResource($service)
         ]);
     }
 

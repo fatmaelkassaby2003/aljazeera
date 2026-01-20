@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\FinancialService;
 use Illuminate\Http\Request;
+use App\Http\Resources\FinancialServiceResource;
 
 class FinancialServiceController extends Controller
 {
@@ -23,7 +24,7 @@ class FinancialServiceController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Financial service retrieved successfully',
-            'data' => $service
+            'data' => new FinancialServiceResource($service)
         ]);
     }
 
@@ -42,7 +43,7 @@ class FinancialServiceController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Financial service retrieved successfully',
-            'data' => $service
+            'data' => new FinancialServiceResource($service)
         ]);
     }
 

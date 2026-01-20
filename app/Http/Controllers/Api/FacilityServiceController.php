@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\FacilityService;
 use Illuminate\Http\Request;
+use App\Http\Resources\FacilityServiceResource;
 
 class FacilityServiceController extends Controller
 {
@@ -23,7 +24,7 @@ class FacilityServiceController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Facility service retrieved successfully',
-            'data' => $service
+            'data' => new FacilityServiceResource($service)
         ]);
     }
 
@@ -42,7 +43,7 @@ class FacilityServiceController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Facility service retrieved successfully',
-            'data' => $service
+            'data' => new FacilityServiceResource($service)
         ]);
     }
 
