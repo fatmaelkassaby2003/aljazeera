@@ -1591,6 +1591,35 @@
                     "response": []
                 }
             ]
+        },
+        {
+            "name": "Budget Ranges API",
+            "item": [
+                {
+                    "name": "Get All Budget Ranges",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/budget-ranges",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "budget-ranges"
+                            ]
+                        },
+                        "description": "الحصول على جميع نطاقات الأسعار النشطة\n\nيُستخدم في نموذج طلب عرض السعر للسماح للمستخدمين باختيار نطاق الميزانية"
+                    },
+                    "response": []
+                }
+            ]
         }
     ],
     "variable": [

@@ -16,6 +16,7 @@ class QuoteRequest extends Model
         'email',
         'service_type',
         'budget_range',
+        'budget_range_id',
         'project_description',
         'status',
         'admin_notes',
@@ -45,5 +46,13 @@ class QuoteRequest extends Model
             'rejected' => 'مرفوض',
             default => $this->status,
         };
+    }
+
+    /**
+     * Get the budget range for this quote request
+     */
+    public function budgetRange()
+    {
+        return $this->belongsTo(BudgetRange::class);
     }
 }

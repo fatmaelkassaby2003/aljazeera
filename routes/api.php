@@ -94,6 +94,9 @@ Route::get('/newsletter/subscriptions', [App\Http\Controllers\Api\NewsletterSubs
 Route::get('/contact-info', [App\Http\Controllers\Api\ContactInfoController::class, 'index']);
 Route::post('/contact-info', [App\Http\Controllers\Api\ContactInfoController::class, 'store']);
 
+// Budget Ranges Routes
+Route::get('/budget-ranges', [App\Http\Controllers\Api\BudgetRangeController::class, 'index']);
+
 
 
 

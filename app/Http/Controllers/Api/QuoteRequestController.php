@@ -16,11 +16,14 @@ class QuoteRequestController extends Controller
             'phone' => 'required|string|max:20',
             'email' => 'required|email|max:255',
             'service_type' => 'required|in:financial,integration,facility',
-            'budget_range' => 'nullable|string|max:255',
+            'budget_range_id' => 'nullable|exists:budget_ranges,id',
             'project_description' => 'required|string',
         ]);
 
         $quoteRequest = QuoteRequest::create($validated);
+        
+        // Load budget range relationship
+        $quoteRequest->load('budgetRange');
 
         return response()->json([
             'status' => true,
@@ -31,7 +34,7 @@ class QuoteRequestController extends Controller
 
     public function index()
     {
-        $requests = QuoteRequest::latest()->get();
+        $requests = QuoteRequest::with('budgetRange')->latest()->get();
         
         return response()->json([
             'status' => true,
@@ -42,7 +45,7 @@ class QuoteRequestController extends Controller
 
     public function show($id)
     {
-        $quoteRequest = QuoteRequest::find($id);
+        $quoteRequest = QuoteRequest::with('budgetRange')->find($id);
 
         if (!$quoteRequest) {
             return response()->json([

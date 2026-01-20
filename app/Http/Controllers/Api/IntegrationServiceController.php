@@ -10,11 +10,20 @@ class IntegrationServiceController extends Controller
 {
     public function index()
     {
-        $services = IntegrationService::all();
+        $service = IntegrationService::first();
+        
+        if (!$service) {
+            return response()->json([
+                'status' => false,
+                'message' => 'No integration service found',
+                'data' => null
+            ], 404);
+        }
+        
         return response()->json([
             'status' => true,
-            'message' => 'Integration services retrieved successfully',
-            'data' => $services
+            'message' => 'Integration service retrieved successfully',
+            'data' => $service
         ]);
     }
 

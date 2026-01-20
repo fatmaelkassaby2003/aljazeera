@@ -10,11 +10,20 @@ class FacilityServiceController extends Controller
 {
     public function index()
     {
-        $services = FacilityService::all();
+        $service = FacilityService::first();
+        
+        if (!$service) {
+            return response()->json([
+                'status' => false,
+                'message' => 'No facility service found',
+                'data' => null
+            ], 404);
+        }
+        
         return response()->json([
             'status' => true,
-            'message' => 'Facility services retrieved successfully',
-            'data' => $services
+            'message' => 'Facility service retrieved successfully',
+            'data' => $service
         ]);
     }
 

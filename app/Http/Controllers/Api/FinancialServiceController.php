@@ -10,11 +10,20 @@ class FinancialServiceController extends Controller
 {
     public function index()
     {
-        $services = FinancialService::all();
+        $service = FinancialService::first();
+        
+        if (!$service) {
+            return response()->json([
+                'status' => false,
+                'message' => 'No financial service found',
+                'data' => null
+            ], 404);
+        }
+        
         return response()->json([
             'status' => true,
-            'message' => 'Financial services retrieved successfully',
-            'data' => $services
+            'message' => 'Financial service retrieved successfully',
+            'data' => $service
         ]);
     }
 
