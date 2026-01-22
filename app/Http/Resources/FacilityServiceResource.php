@@ -23,6 +23,7 @@ class FacilityServiceResource extends JsonResource
                 'title' => $type->title,
                 'description' => $type->description,
                 'points' => $type->points,
+                'items' => $type->items, // إضافة البنود هنا
                 'images' => $type->images,
             ];
 
