@@ -16,15 +16,23 @@ class FacilityServiceResource extends JsonResource
     {
         $data = parent::toArray($request);
 
-        if (isset($data['types']) && is_array($data['types'])) {
-            foreach ($data['types'] as &$type) {
-                if (isset($type['images']) && is_array($type['images'])) {
-                    $type['images'] = array_map(function ($image) {
-                        return asset($image);
-                    }, $type['images']);
-                }
+        // Fetch types from relationship
+        $data['types'] = $this->types->map(function ($type) {
+            $typeData = [
+                'id' => $type->id,
+                'title' => $type->title,
+                'description' => $type->description,
+                'points' => $type->points,
+                'images' => $type->images,
+            ];
+
+            if (isset($typeData['images']) && is_array($typeData['images'])) {
+                $typeData['images'] = array_map(function ($image) {
+                    return asset($image);
+                }, $typeData['images']);
             }
-        }
+            return $typeData;
+        });
 
         return $data;
     }

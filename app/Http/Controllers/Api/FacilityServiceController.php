@@ -11,7 +11,7 @@ class FacilityServiceController extends Controller
 {
     public function index()
     {
-        $service = FacilityService::first();
+        $service = FacilityService::with('types')->first();
         
         if (!$service) {
             return response()->json([
@@ -30,7 +30,7 @@ class FacilityServiceController extends Controller
 
     public function show($id)
     {
-        $service = FacilityService::find($id);
+        $service = FacilityService::with('types')->find($id);
 
         if (!$service) {
             return response()->json([

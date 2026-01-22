@@ -16,16 +16,19 @@ class FinancialService extends Model
         'price',
         'description',
         'important_note',
-        'types',
         'work_mechanism',
         'financial_periods',
         'icon',
     ];
 
     protected $casts = [
-        'types' => 'array',
         'work_mechanism' => 'array',
         'financial_periods' => 'array',
         'price' => 'decimal:2',
     ];
+
+    public function types()
+    {
+        return $this->morphMany(ServiceType::class, 'serviceable');
+    }
 }

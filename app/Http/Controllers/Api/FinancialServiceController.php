@@ -11,7 +11,7 @@ class FinancialServiceController extends Controller
 {
     public function index()
     {
-        $service = FinancialService::first();
+        $service = FinancialService::with('types')->first();
         
         if (!$service) {
             return response()->json([
@@ -30,7 +30,7 @@ class FinancialServiceController extends Controller
 
     public function show($id)
     {
-        $service = FinancialService::find($id);
+        $service = FinancialService::with('types')->find($id);
 
         if (!$service) {
             return response()->json([

@@ -14,7 +14,6 @@ return new class extends Migration
             $table->decimal('price', 10, 2)->nullable();
             $table->text('description')->nullable();
             $table->text('important_note')->nullable();
-            $table->json('types')->nullable();
             $table->string('icon')->nullable();
             $table->timestamps();
         });

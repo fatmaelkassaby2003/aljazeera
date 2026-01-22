@@ -11,7 +11,7 @@ class IntegrationServiceController extends Controller
 {
     public function index()
     {
-        $service = IntegrationService::first();
+        $service = IntegrationService::with('types')->first();
         
         if (!$service) {
             return response()->json([
@@ -30,7 +30,7 @@ class IntegrationServiceController extends Controller
 
     public function show($id)
     {
-        $service = IntegrationService::find($id);
+        $service = IntegrationService::with('types')->find($id);
 
         if (!$service) {
             return response()->json([

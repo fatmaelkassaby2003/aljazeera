@@ -48,7 +48,8 @@ class FacilityServiceResource extends Resource
 
                 Forms\Components\Section::make('التفاصيل الإضافية')
                     ->schema([
-                        Forms\Components\Repeater::make('types')
+                        Forms\Components\Repeater::make('types_repeater')
+                            ->relationship('types')
                             ->label('أنواع الخدمة')
                             ->schema([
                                 Forms\Components\TextInput::make('title')

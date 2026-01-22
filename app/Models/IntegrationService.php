@@ -16,12 +16,15 @@ class IntegrationService extends Model
         'price',
         'description',
         'important_note',
-        'types',
         'icon',
     ];
 
     protected $casts = [
-        'types' => 'array',
         'price' => 'decimal:2',
     ];
+
+    public function types()
+    {
+        return $this->morphMany(ServiceType::class, 'serviceable');
+    }
 }
