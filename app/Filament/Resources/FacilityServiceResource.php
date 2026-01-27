@@ -55,6 +55,9 @@ class FacilityServiceResource extends Resource
                                 Forms\Components\TextInput::make('title')
                                     ->label('العنوان')
                                     ->required(),
+                                Forms\Components\Textarea::make('description')
+                                    ->label('الشرح')
+                                    ->rows(2),
                                 Forms\Components\FileUpload::make('images')
                                     ->label('صور النوع')
                                     ->image()
@@ -81,9 +84,6 @@ class FacilityServiceResource extends Resource
                                             ]),
                                     ])
                                     ->collapsible(),
-                                Forms\Components\Textarea::make('description')
-                                    ->label('الشرح')
-                                    ->rows(2),
                             ])
                             ->columnSpanFull(),
                     ]),
